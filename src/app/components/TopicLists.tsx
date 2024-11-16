@@ -4,15 +4,15 @@ import { HiPencilAlt } from "react-icons/hi";
 import RemoveBtn from "./removeBtn";
 import { useRouter } from "next/navigation";   
 
-
+const router = useRouter();
 const getTopics = async () => {
-  const router = useRouter();
+  
   try {
     const res = await fetch("http://localhost:3000/api/topics", {
       cache: "no-store",
     });
     if (res.ok) {
-      router
+      router.refresh()
     }
     if (!res.ok) {
       throw new Error("Failed to fetch topics");
